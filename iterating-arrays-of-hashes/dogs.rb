@@ -90,12 +90,20 @@ class Dogs
   def owners
     dog_owners =[]
     @dogs.each do |dog|
-
+      if !dog_owners.include?("#{dog[:owner][:name][:first]}" + " " + "#{dog[:owner][:name][:last]}")
+        dog_owners << "#{dog[:owner][:name][:first]}" + " " + "#{dog[:owner][:name][:last]}"
+      end
     end
     dog_owners
   end
 
   def average_owners
-    # only use the @dogs instance variable and constants
+    average_owners = []
+    @dogs.each do |dog|
+      if dog[:owner][:owner_quality] == AVERAGE && !average_owners.include?("#{dog[:owner][:name][:first]}" + " " + "#{dog[:owner][:name][:last]}")
+        average_owners << "#{dog[:owner][:name][:first]}" + " " + "#{dog[:owner][:name][:last]}"
+      end
+    end
+    average_owners
   end
 end
